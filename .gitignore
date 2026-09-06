@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build outputs
+client/.next/
+server/dist/
+*.tsbuildinfo
+
+# Environment files (contain secrets — never commit)
+.env
+server/.env
+client/.env.local
+
+# Database data directory (local dev)
+pgdata/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
