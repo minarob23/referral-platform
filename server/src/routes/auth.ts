@@ -29,6 +29,7 @@ router.post('/register', [
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
     res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
   } catch (error) {
+    console.error('Register error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -51,6 +52,7 @@ router.post('/login', [
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '7d' });
     res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
   } catch (error) {
+    console.error('Login error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -61,6 +63,7 @@ router.get('/me', authenticate, async (req: AuthRequest, res: any) => {
     if (!user) return res.status(404).json({ error: 'User not found' });
     res.json({ id: user.id, name: user.name, email: user.email });
   } catch (error) {
+    console.error('Get me error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });

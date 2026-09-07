@@ -17,6 +17,7 @@ router.get('/', authenticate, async (req: AuthRequest, res: any) => {
     });
     res.json(referrals);
   } catch (error) {
+    console.error('Get referrals error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -53,6 +54,7 @@ router.post('/', authenticate, [
 
     res.json(referral);
   } catch (error) {
+    console.error('Create referral error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -79,6 +81,7 @@ router.patch('/:id/status', authenticate, [
 
     res.json(updatedReferral);
   } catch (error) {
+    console.error('Update referral status error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });

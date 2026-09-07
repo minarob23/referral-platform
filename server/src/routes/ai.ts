@@ -22,6 +22,7 @@ router.post('/suggest-note', authenticate, [
     const note = await suggestNote(job.title, job.location, job.description, friendName);
     res.json({ note });
   } catch (error) {
+    console.error('Suggest note error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
